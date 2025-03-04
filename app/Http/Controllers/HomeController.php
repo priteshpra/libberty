@@ -33,4 +33,48 @@ class HomeController extends Controller
         // return view('home');
         return  view('front.index');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function regentHall()
+    {
+        $title = 'Regent Hall';
+        // return view('home');
+        return  view('front.regent-hall', compact('title'));
+    }
+
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function anantaHall()
+    {
+        return  view('front.ananta-hall');
+    }
+
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function banjaraHall()
+    {
+        return  view('front.banjara-hall');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function thankYou()
+    {
+        return  view('front.thank-you');
+    }
 }

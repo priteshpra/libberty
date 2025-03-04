@@ -8,14 +8,9 @@ use App\Http\Controllers\Backend\AdminsController;
 use App\Http\Controllers\Backend\Auth\ForgotPasswordController;
 use App\Http\Controllers\Backend\Auth\LoginController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\RolesController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BlogsController;
 use App\Http\Controllers\Backend\CmsController;
-use App\Http\Controllers\Backend\ClientController;
-use App\Http\Controllers\Backend\OurteamController;
-use App\Http\Controllers\Backend\EventController;
-use App\Http\Controllers\Backend\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +31,10 @@ Auth::routes();
 
 Route::get('/admin', 'HomeController@redirectAdmin')->name('index');
 Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/regent-hall', 'HomeController@regentHall')->name('regent-hall');
+Route::get('/anantaa-hall', 'HomeController@anantaHall')->name('anantaa-hall');
+Route::get('/banjara-hall', 'HomeController@banjaraHall')->name('banjara-hall');
+Route::get('/thank-you', 'HomeController@thankYou')->name('thank-you');
 /**
  * Admin routes
  */
