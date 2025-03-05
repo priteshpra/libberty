@@ -100,7 +100,31 @@ $usr = Auth::guard('admin')->user();
                     </li>
                     @endif
 
-                    @if ($usr->can('cms.create') || $usr->can('cms.view') || $usr->can('cms.edit') ||
+                    @if ($usr->can('banner.create') || $usr->can('banner.view') || $usr->can('banner.edit') ||
+                    $usr->can('banner.delete'))
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i
+                                class="fa fa-picture-o"></i><span>Gallerys</span>
+                        </a>
+                        <ul
+                            class="collapse {{ Route::is('admin.gallery.create') || Route::is('admin.gallery.index') || Route::is('admin.gallery.edit') || Route::is('admin.gallery.show') ? 'in' : '' }}">
+
+                            @if ($usr->can('banner.view'))
+                            <li
+                                class="{{ Route::is('admin.gallery.index')  || Route::is('admin.gallery.edit') ? 'active' : '' }}">
+                                <a href="{{ route('admin.gallery.index') }}">All Gallerys</a>
+                            </li>
+                            @endif
+
+                            @if ($usr->can('banner.create'))
+                            <li class="{{ Route::is('admin.gallery.create')  ? 'active' : '' }}"><a
+                                    href="{{ route('admin.gallery.create') }}">Create Gallery</a></li>
+                            @endif
+                        </ul>
+                    </li>
+                    @endif
+
+                    {{-- @if ($usr->can('cms.create') || $usr->can('cms.view') || $usr->can('cms.edit') ||
                     $usr->can('cms.delete'))
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i
@@ -122,7 +146,7 @@ $usr = Auth::guard('admin')->user();
                             @endif
                         </ul>
                     </li>
-                    @endif
+                    @endif --}}
 
                     @if ($usr->can('blogs.create') || $usr->can('blogs.view') || $usr->can('blogs.edit') ||
                     $usr->can('blogs.delete'))

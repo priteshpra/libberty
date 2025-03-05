@@ -24,7 +24,7 @@ Banner Edit - Admin Panel
                 <h4 class="page-title pull-left">Banner Edit</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('admin.admins.index') }}">All Banners</a></li>
+                    <li><a href="{{ route('admin.banner.index') }}">All Banners</a></li>
                     <li><span>Edit Banner - {{ $admin->title }}</span></li>
                 </ul>
             </div>
@@ -45,7 +45,8 @@ Banner Edit - Admin Panel
                     <h4 class="header-title">Edit Admin - {{ $admin->title }}</h4>
                     @include('backend.layouts.partials.messages')
 
-                    <form action="{{ route('admin.banner.update', $admin->id) }}" method="POST">
+                    <form action="{{ route('admin.banner.update', $admin->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-row">
@@ -62,8 +63,31 @@ Banner Edit - Admin Panel
                         </div>
 
                         <div class="form-row">
-                            <label for="password">Description</label>
-                            <textarea class="form-control" id="desc" name="desc">{{ $admin->desc }}</textarea>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="password">Description</label>
+                                <textarea class="form-control" id="desc" name="desc">{{ $admin->desc }}</textarea>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="username">Banner Type</label>
+                                <select class="form-control " id="type" name="type" required>
+                                    <option value="anantaa" {{ old('type')=='anantaa' ? 'selected' : '' }} {{ $admin->
+                                        type=='anantaa'
+                                        ? 'selected' : '' }}>Anantaa
+                                    </option>
+                                    <option value="regent" {{ old('type')=='regent' ? 'selected' : '' }} {{ $admin->
+                                        type=='Regent'
+                                        ? 'selected' : '' }}>Regent
+                                    </option>
+                                    <option value="banjara" {{ old('type')=='banjara' ? 'selected' : '' }} {{ $admin->
+                                        type=='Banjara'
+                                        ? 'selected' : '' }}>Banjara
+                                    </option>
+                                    <option value="blog" {{ old('type')=='blog' ? 'selected' : '' }} {{ $admin->
+                                        type=='blog'
+                                        ? 'selected' : '' }}>Blog
+                                    </option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-row">
@@ -86,14 +110,14 @@ Banner Edit - Admin Panel
                                 </select>
                             </div>
                         </div>
-                        <div class="form-row">
+                        {{-- <div class="form-row">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="is_popup" name="is_popup" {{
                                     $admin->is_popup=='1'
                                 ? 'checked' : '' }}>
                                 <label class="form-check-label" for="is_popup">Popup Show on Web</label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save</button>
                         <a href="{{ route('admin.banner.index') }}" class="btn btn-secondary mt-4 pr-4 pl-4">Cancel</a>

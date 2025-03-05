@@ -1,11 +1,11 @@
 <!-- jquery latest version -->
-<script src="{{ asset('backend/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+{{-- <script src="{{ asset('backend/assets/js/vendor/jquery-2.2.4.min.js') }}"></script> --}}
 
 <!-- Vendor JS Files -->
 <script src="{{ asset('front/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('front/assets/vendor/php-email-form/validate.js') }}?v=2"></script>
+<script src="{{ asset('front/assets/vendor/php-email-form/validate.js?v=2') }}"></script>
 <script src="{{ asset('front/assets/vendor/aos/aos.js') }}"></script>
-<script src="{{ asset('front/assets/vendor/typed.js') }}/typed.umd.js') }}"></script>
+<script src="{{ asset('front/assets/vendor/typed.js/typed.umd.js') }}"></script>
 <script src="{{ asset('front/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
 <script src="{{ asset('front/assets/vendor/purecounter/purecounter.js') }}"></script>
 <script src="{{ asset('front/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
@@ -13,7 +13,7 @@
 <script src="{{ asset('front/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
 <script src="{{ asset('front/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('front/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+{{-- <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script> --}}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script type="text/javascript" src=https://d2jyl60qlhb39o.cloudfront.net/integration-plugin.js id="wa-widget"
@@ -177,3 +177,4 @@ portfolioContainer.imagesLoaded().progress(function() {
   });
 </script>
 <script src="{{ asset('front/assets/js/main.js') }}"></script>
+<script src="{{ asset('front/assets/js/blogmain.js') }}"></script>

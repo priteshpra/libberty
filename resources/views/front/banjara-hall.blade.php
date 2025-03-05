@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 
-@section('title')
-{{ __('Best Banquet Halls for Weddings & Parties – Liberty Exclusive') }}
-@endsection
-
 @section('styles')
 <style>
     .hdr-img img {
@@ -29,11 +25,8 @@
 
         <!-- The HTML5 video element that will create the background video on the header -->
         <div class="hdr-img">
-            <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/banjara-inner-page.jpg') }}" alt="Banjara Hall">
+            <img src="{{ asset('banners/'.$bannerBanjara->image) }}" alt="Banjara Hall">
         </div>
-        <!-- <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    		<source src="{{ asset('front/assets/vdo/ananta-hall.mp4') }}" type="video/mp4">
-    	  </video>-->
 
         <!-- The header content -->
         <div class="container h-100">
@@ -42,12 +35,11 @@
                     <h1 class="display-3 text-black anantalogo"><img src="{{ asset('front/assets/img/banjara.png') }}"
                             alt="Banjara Hall">
                     </h1>
-                    <p class="lead mb-0 text-black">Weddings, Receptions, Parties, Corporates and More …..</p>
+                    <p class="lead mb-0 text-black">{{ $bannerBanjara->desc }} …..</p>
                 </div>
             </div>
         </div>
     </div>
-
     <section id="portfolio-details" class="portfolio-details section">
 
         <div class="container" data-aos="fade-up">
@@ -56,52 +48,30 @@
                     <div class="portfolio-details-slider swiper init-swiper">
                         <script type="application/json" class="swiper-config">
                             {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "navigation": {
-                    "nextEl": ".swiper-button-next",
-                    "prevEl": ".swiper-button-prev"
-                  },
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
+                                "loop": true,
+                                "speed": 600,
+                                "autoplay": {
+                                    "delay": 5000
+                                },
+                                "slidesPerView": "auto",
+                                "navigation": {
+                                    "nextEl": ".swiper-button-next",
+                                    "prevEl": ".swiper-button-prev"
+                                },
+                                "pagination": {
+                                    "el": ".swiper-pagination",
+                                    "type": "bullets",
+                                    "clickable": true
+                                }
+                            }
                         </script>
                         <div class="swiper-wrapper align-items-center">
-
+                            @foreach ($galleryBanjara as $banjara)
                             <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-7.webp') }}" alt="">
+                                <img src="{{ asset('gallerys/'.$banjara->image) }}" alt="">
                             </div>
+                            @endforeach
 
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-6.webp') }}" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-5.webp') }}" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-4.webp') }}" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-3.webp') }}" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-2.webp') }}" alt="">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Banjara-Hall/Banjara-1.webp') }}" alt="">
-                            </div>
 
                         </div>
                         <div class="swiper-button-prev"></div>

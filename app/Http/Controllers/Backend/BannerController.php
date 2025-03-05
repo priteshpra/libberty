@@ -43,8 +43,9 @@ class BannerController extends Controller
         $admin = new Banner();
         $admin->title = $request->title;
         $admin->heading = $request->heading;
-        $admin->is_popup = isset($request->is_popup) && $request->is_popup == 'on' ? 1 : 0;
+        $admin->type = $request->type;
         $admin->desc = $request->desc;
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -88,8 +89,9 @@ class BannerController extends Controller
         $admin = Banner::findOrFail($id);
         $admin->title = $request->title;
         $admin->heading = $request->heading;
-        $admin->is_popup = isset($request->is_popup) && $request->is_popup == 'on' ? 1 : 0;
+        $admin->type = $request->type;
         $admin->desc = $request->desc;
+        // dd($request->hasFile('image'));
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();

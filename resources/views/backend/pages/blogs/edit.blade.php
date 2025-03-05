@@ -49,7 +49,7 @@ Blog Edit - Admin Panel
                         @method('PUT')
                         @csrf
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-6">
+                            {{-- <div class="form-group col-md-6 col-sm-6">
                                 <label for="username">Category Name</label>
                                 <select class="form-control " id="category_id" name="category_id" required>
                                     <option value="">Select Category
@@ -62,19 +62,25 @@ Blog Edit - Admin Panel
                                     </option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="name">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"
                                     placeholder="Enter Title" value="{{ $admin->title }}" required autofocus>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Author</label>
                                 <input type="text" name="author" id="author" value="{{ $admin->author }}"
                                     class="form-control" required />
                             </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="password">Description</label>
+                            <textarea class="form-control" id="description"
+                                name="description">{{ $admin->description }}</textarea>
+                        </div>
+                        <div class="form-row">
+
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Blog Date</label>
                                 <input type="date" name="blog_date" id="blog_date" class="form-control"
@@ -83,11 +89,7 @@ Blog Edit - Admin Panel
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <label for="password">Description</label>
-                            <textarea class="form-control" id="description"
-                                name="description">{{ $admin->description }}</textarea>
-                        </div>
+
 
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-6">
@@ -120,6 +122,13 @@ Blog Edit - Admin Panel
 
     </div>
 </div>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace('description');
+    setTimeout(() => {
+        $('.cke_notification_warning').hide();
+    }, 1000);
+</script>
 @endsection
 
 @section('scripts')
@@ -129,4 +138,3 @@ Blog Edit - Admin Panel
         $('.select2').select2();
     })
 </script>
-@endsection

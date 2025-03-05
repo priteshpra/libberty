@@ -11,6 +11,8 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BlogsController;
 use App\Http\Controllers\Backend\CmsController;
+use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +37,16 @@ Route::get('/regent-hall', 'HomeController@regentHall')->name('regent-hall');
 Route::get('/anantaa-hall', 'HomeController@anantaHall')->name('anantaa-hall');
 Route::get('/banjara-hall', 'HomeController@banjaraHall')->name('banjara-hall');
 Route::get('/thank-you', 'HomeController@thankYou')->name('thank-you');
+Route::get('/blog', 'BlogController@index')->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.details');
+
 /**
  * Admin routes
  */
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('banner', BannerController::class);
+    Route::resource('gallery', GalleryController::class);
     Route::resource('cms', CmsController::class);
     Route::resource('blogs', BlogsController::class);
     Route::resource('leads', LeadsController::class);

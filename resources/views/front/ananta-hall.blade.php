@@ -1,9 +1,5 @@
 @extends('front.layouts.master')
 
-@section('title')
-{{ __('Best Banquet Halls for Weddings & Parties – Liberty Exclusive') }}
-@endsection
-
 @section('styles')
 <style>
     .hdr-img img {
@@ -23,27 +19,18 @@
 
 <body class="portfolio-details-page">
     <div class="ananta-header">
-
-        <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
         <div class="overlay"></div>
-
-        <!-- The HTML5 video element that will create the background video on the header -->
         <div class="hdr-img">
-            <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/ananta-inner-page.jpg') }}" alt="Banjara Hall">
+            <img src="{{ asset('banners/'.$bannerAnantaa->image) }}" alt="Banjara Hall">
         </div>
-        <!-- The HTML5 video element that will create the background video on the header -->
-        <!--<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    		<source src="{{ asset('front/assets/img/portfolio/Regent-Hall/regent-hall.mp4') }}" type="video/mp4">
-    	  </video>-->
 
-        <!-- The header content -->
         <div class="container h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
                     <h1 class="display-3 text-black anantalogo"><img src="{{ asset('front/assets/img/ananta.png') }}"
                             alt="Anantaa Hall">
                     </h1>
-                    <p class="lead mb-0 text-black">Weddings, Receptions, Parties, Corporates and More …..</p>
+                    <p class="lead mb-0 text-black">{{ $bannerAnantaa->desc }} …..</p>
                 </div>
             </div>
         </div>
@@ -56,55 +43,29 @@
                     <div class="portfolio-details-slider swiper init-swiper">
                         <script type="application/json" class="swiper-config">
                             {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "navigation": {
-                    "nextEl": ".swiper-button-next",
-                    "prevEl": ".swiper-button-prev"
-                  },
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
+                                "loop": true,
+                                "speed": 600,
+                                "autoplay": {
+                                    "delay": 5000
+                                },
+                                "slidesPerView": "auto",
+                                "navigation": {
+                                    "nextEl": ".swiper-button-next",
+                                    "prevEl": ".swiper-button-prev"
+                                },
+                                "pagination": {
+                                    "el": ".swiper-pagination",
+                                    "type": "bullets",
+                                    "clickable": true
+                                }
+                            }
                         </script>
                         <div class="swiper-wrapper align-items-center">
-
+                            @foreach ($galleryAnantaa as $key => $ananta)
                             <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/7.webp') }}"
-                                    alt="Ananta Hall 1">
+                                <img src="{{ asset('gallerys/'.$ananta->image) }}" alt="Ananta Hall {{ $key++ }}">
                             </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/6.webp') }}"
-                                    alt="Ananta Hall 2">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/5.webp') }}"
-                                    alt="Ananta Hall 3">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/4.webp') }}"
-                                    alt="Ananta Hall 4">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/3.webp') }}"
-                                    alt="Ananta Hall 4">
-                            </div>
-
-                            <div class="swiper-slide">
-                                <img src="{{ asset('front/assets/img/portfolio/Anantaa-Hall/2.webp') }}"
-                                    alt="Ananta Hall 4">
-                            </div>
-
+                            @endforeach
                         </div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
@@ -163,13 +124,7 @@
                                 <td>1</td>
                                 <td>2</td>
                             </tr>
-                            <!--<tr>
-    						  <th scope="row">3</th>
-    						  <td>LIVE MOCKTAILS</td>
-    						  <td>-</td>
-    						<td>-</td>
-    						<td>Counter</td>
-    						</tr>-->
+
                             <tr>
                                 <th scope="row">3</th>
                                 <td>STARTERS</td>
@@ -198,13 +153,7 @@
                                 <td>3</td>
                                 <td>4</td>
                             </tr>
-                            <!--<tr>
-    						  <th scope="row">8</th>
-    						  <td>DAKSHIN</td>
-    						  <td>-</td>
-    						<td>-</td>
-    						<td>2</td>
-    						</tr>-->
+
                             <tr>
                                 <th scope="row">7</th>
                                 <td>SALAD</td>
@@ -418,7 +367,6 @@
                         </div>
                     </form>
                 </div><!-- End Contact Form -->
-                <!--<div class="imgShowCnt" style="display:none"><img width='650' src="https://www.libertyexclusive.com/assets/img/Thank-You-page-for-banquets.png" alt="Displayed Image"></div>-->
             </div>
         </div>
     </section><!-- /Contact Section -->

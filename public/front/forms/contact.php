@@ -48,7 +48,7 @@ $contact->to = $receiving_email_address;
 $contact->from_name = $name;
 $contact->from_email = 'sales@libertyexclusive.com';
 $contact->subject = 'Enquiry from website';
-$contact->cc = array('teamhospitrendia@gmail.com');
+$contact->cc = array('teamhospitrendia@gmail.com', 'vishnu_marketing@libertyexclusive.com', 'priteshp.sandvirp@gmail.com');
 
 // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
 
@@ -61,5 +61,30 @@ $contact->add_message($package, 'Package');
 $contact->add_message($time_to_call, 'Any preferred time for a callback');
 $contact->add_message($reference, 'Reference');
 $contact->add_message($message, 'Message');
+if ($contact->send()) {
+    $servername = "localhost"; // Change if needed
+    $username = "root"; // Change if needed
+    $password = ""; // Change if needed
+    $database = "libberty"; // Change to your actual database name
 
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $database);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $stmt = $conn->prepare("INSERT INTO leads (name, contact_number, event_date, hall_name, no_of_guest, package, event_time, referance_any, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssissss", $name, $contact_no, $event_date, $hall, $number_of_guest, $package, $time_to_call, $reference, $message);
+    if ($stmt->execute()) {
+        // echo "Data inserted successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close connection
+    $stmt->close();
+    $conn->close();
+}
 echo $contact->send();

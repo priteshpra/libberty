@@ -61,10 +61,24 @@ Banner Create - Admin Panel
                             </div>
                         </div>
 
+
                         <div class="form-row">
-                            <div class="form-group col-md-12 col-sm-12">
+                            <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Description</label>
                                 <textarea class="form-control" id="desc" name="desc"></textarea>
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="username">Banner Type</label>
+                                <select class="form-control " id="type" name="type" required>
+                                    <option value="anantaa" {{ old('type')=='anantaa' ? 'selected' : '' }}>Anantaa
+                                    </option>
+                                    <option value="regent" {{ old('type')=='regent' ? 'selected' : '' }}>Regent
+                                    </option>
+                                    <option value="banjara" {{ old('type')=='banjara' ? 'selected' : '' }}>Banjara
+                                    </option>
+                                    <option value="blog" {{ old('type')=='blog' ? 'selected' : '' }}>Blog
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
@@ -85,12 +99,12 @@ Banner Create - Admin Panel
                                 </select>
                             </div>
                         </div>
-                        <div class="form-row">
+                        {{-- <div class="form-row">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="is_popup" name="is_popup">
                                 <label class="form-check-label" for="is_popup">Popup Show on Web</label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save</button>
                         <a href="{{ route('admin.banner.index') }}" class="btn btn-secondary mt-4 pr-4 pl-4">Cancel</a>

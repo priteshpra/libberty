@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,7 +33,10 @@ class HomeController extends Controller
     {
         // dd('home');
         // return view('home');
-        return  view('front.index');
+        $galleryAnantaa = Gallery::where(['status' => 1, 'type' => 'anantaa'])->get();
+        $galleryRegent = Gallery::where(['status' => 1, 'type' => 'regent'])->get();
+        $galleryBanjara = Gallery::where(['status' => 1, 'type' => 'banjara'])->get();
+        return  view('front.index', compact('galleryAnantaa', 'galleryRegent', 'galleryBanjara'));
     }
 
     /**
@@ -42,8 +47,10 @@ class HomeController extends Controller
     public function regentHall()
     {
         $title = 'Regent Hall';
+        $galleryRegent = Gallery::where(['status' => 1, 'type' => 'regent'])->get();
+        $bannerRegent = Banner::where(['status' => 1, 'type' => 'regent'])->orderBy('id', 'desc')->limit('1')->first();
         // return view('home');
-        return  view('front.regent-hall', compact('title'));
+        return  view('front.regent-hall', compact('title', 'galleryRegent', 'bannerRegent'));
     }
 
 
@@ -54,7 +61,9 @@ class HomeController extends Controller
      */
     public function anantaHall()
     {
-        return  view('front.ananta-hall');
+        $galleryAnantaa = Gallery::where(['status' => 1, 'type' => 'anantaa'])->get();
+        $bannerAnantaa = Banner::where(['status' => 1, 'type' => 'anantaa'])->orderBy('id', 'desc')->limit('1')->first();
+        return  view('front.ananta-hall', compact('galleryAnantaa', 'bannerAnantaa'));
     }
 
 
@@ -65,7 +74,9 @@ class HomeController extends Controller
      */
     public function banjaraHall()
     {
-        return  view('front.banjara-hall');
+        $galleryBanjara = Gallery::where(['status' => 1, 'type' => 'banjara'])->get();
+        $bannerBanjara = Banner::where(['status' => 1, 'type' => 'banjara'])->orderBy('id', 'desc')->limit('1')->first();
+        return  view('front.banjara-hall', compact('galleryBanjara', 'bannerBanjara'));
     }
 
     /**

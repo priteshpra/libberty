@@ -1,0 +1,239 @@
+// main: ../main.scss
+/*--------------------------------------------------------------
+# Author Profile Section
+--------------------------------------------------------------*/
+.author-profile {
+  .author-card {
+    background-color: var(--surface-color);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    height: 100%;
+
+    .author-image {
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+      img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    .author-info {
+      text-align: center;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .designation {
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .author-bio {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .author-stats {
+      border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+      border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+      padding: 1rem 0;
+
+      .stat-item {
+        h4 {
+          font-size: 1.75rem;
+          margin-bottom: 0.25rem;
+          color: var(--accent-color);
+        }
+
+        p {
+          font-size: 0.85rem;
+          margin: 0;
+          color: color-mix(in srgb, var(--default-color), transparent 40%);
+        }
+      }
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+        color: var(--accent-color);
+        border-radius: 50%;
+        margin: 0 0.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: var(--accent-color);
+          color: var(--contrast-color);
+          transform: translateY(-3px);
+        }
+
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .author-content {
+    background-color: var(--surface-color);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    height: 100%;
+
+    .content-header {
+      margin-bottom: 1.5rem;
+
+      h3 {
+        font-size: 1.75rem;
+        margin-bottom: 0;
+      }
+    }
+
+    .content-body {
+      p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
+      .expertise-areas {
+        h4 {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+        }
+
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+
+          span {
+            background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: var(--accent-color);
+              color: var(--contrast-color);
+            }
+          }
+        }
+      }
+
+      .featured-articles {
+        h4 {
+          font-size: 1.25rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .article-card {
+          background-color: var(--background-color);
+          border-radius: 10px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: translateY(-5px);
+          }
+
+          .article-img {
+            height: 200px;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 0.3s ease;
+            }
+
+            &:hover img {
+              transform: scale(1.1);
+            }
+          }
+
+          .article-details {
+            padding: 1.25rem;
+
+            .post-category {
+              display: inline-block;
+              background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+              color: var(--accent-color);
+              padding: 0.25rem 0.75rem;
+              border-radius: 15px;
+              font-size: 0.85rem;
+              margin-bottom: 0.75rem;
+            }
+
+            h5 {
+              font-size: 1.1rem;
+              margin-bottom: 0.75rem;
+              line-height: 1.4;
+
+              a {
+                color: var(--heading-color);
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &:hover {
+                  color: var(--accent-color);
+                }
+              }
+            }
+
+            .post-meta {
+              font-size: 0.85rem;
+              color: color-mix(in srgb, var(--default-color), transparent 40%);
+
+              span {
+                display: inline-flex;
+                align-items: center;
+                margin-right: 1rem;
+
+                i {
+                  margin-right: 0.35rem;
+                  font-size: 1rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .author-card {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .featured-articles {
+      .article-card {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
