@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-Blog Edit - Admin Panel
+Comments Edit - Admin Panel
 @endsection
 
 @section('styles')
@@ -21,11 +21,11 @@ Blog Edit - Admin Panel
     <div class="row align-items-center">
         <div class="col-sm-6">
             <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">Blog Edit</h4>
+                <h4 class="page-title pull-left">Comments Edit</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('admin.blogs.index') }}">All Blogs</a></li>
-                    <li><span>Edit Blog - {{ $admin->title }}</span></li>
+                    <li><a href="{{ route('admin.comment.index') }}">All Comments</a></li>
+                    <li><span>Edit Comments - {{ $admin->title }}</span></li>
                 </ul>
             </div>
         </div>
@@ -42,10 +42,10 @@ Blog Edit - Admin Panel
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Edit Blog - {{ $admin->title }}</h4>
+                    <h4 class="header-title">Edit Comment - {{ $admin->title }}</h4>
                     @include('backend.layouts.partials.messages')
 
-                    <form action="{{ route('admin.blogs.update', $admin->id) }}" method="POST"
+                    <form action="{{ route('admin.comment.update', $admin->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
@@ -114,17 +114,8 @@ Blog Edit - Admin Panel
                                 </select>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="is_featured" name="is_featured" {{
-                                    $admin->is_featured=='1'
-                                ? 'checked' : '' }}>
-                                <label class="form-check-label" for="is_featured">Is Featured Blog</label>
-                            </div>
-                        </div>
-
                         <button type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save</button>
-                        <a href="{{ route('admin.blogs.index') }}" class="btn btn-secondary mt-4 pr-4 pl-4">Cancel</a>
+                        <a href="{{ route('admin.comment.index') }}" class="btn btn-secondary mt-4 pr-4 pl-4">Cancel</a>
                     </form>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <!-- header area start -->
-@if (Route::currentRouteName() == 'blog')
+@if (Route::currentRouteName() == 'blog' || Route::currentRouteName() == 'blog.details')
 <header id="header" class="header position-relative">
     <div class="container-fluid container-xl position-relative">
 

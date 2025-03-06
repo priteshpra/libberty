@@ -22,4 +22,6 @@
 <link href="{{ asset('front/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
 
 <!-- Main CSS File -->
+@if (Route::currentRouteName() != 'blog' && Route::currentRouteName() != 'blog.details')
 <link href="{{ asset('front/assets/css/main.css') }}" rel="stylesheet">
+@endif

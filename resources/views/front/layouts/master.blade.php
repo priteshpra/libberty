@@ -37,6 +37,10 @@
         content="Host your dream wedding or event at A'La Liberty, offering the best banquet halls in Hyderabad. Spacious venues, elegant décor, and top-tier hospitality await you."
         name="description">
     <meta content="catering, banquets, restaurants, vegetarian dining, Hyderabad" name="keywords">
+    @elseif (Route::currentRouteName() == 'blog' || Route::currentRouteName() == 'blog.details')
+    <title>A’La Liberty - Blog</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
     @endif
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -53,7 +57,7 @@
 </noscript>
 <!-- End Google Tag Manager -->
 <!-- preloader area start -->
-@if (!Route::is('blog'))
+@if (!Route::is('blog') && !Route::is('blog.details'))
 <div class="companylogo">
     <a href="#">
         <img src="{{ asset('front/assets/img/logo.png') }}" alt="Company logo" width="250px">

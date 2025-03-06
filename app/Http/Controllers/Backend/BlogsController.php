@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -47,6 +48,7 @@ class BlogsController extends Controller
         $admin->author = $request->author;
         $admin->blog_date = date('Y-m-d', strtotime($request->blog_date));
         $admin->description = $request->description;
+        $admin->is_featured = isset($request->is_featured) && $request->is_featured == 'on' ? 1 : 0;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -62,9 +64,13 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blog $banner)
+    public function show(Blog $banner, $id)
     {
-        //
+
+        return view('backend.pages.comments.index', [
+            'admins' => Comment::where('blog_id', $id)->get(),
+            'blogs' => Blog::where('id', $id)->first(),
+        ]);
     }
 
     /**
@@ -94,6 +100,7 @@ class BlogsController extends Controller
         $admin->author = $request->author;
         $admin->blog_date = date('Y-m-d', strtotime($request->blog_date));
         $admin->description = $request->description;
+        $admin->is_featured = isset($request->is_featured) && $request->is_featured == 'on' ? 1 : 0;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();

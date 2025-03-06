@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-{{ __('Blogs - Admin Panel') }}
+{{ __('Comments - Admin Panel') }}
 @endsection
 
 @section('styles')
@@ -21,10 +21,10 @@
     <div class="row align-items-center">
         <div class="col-sm-6">
             <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">{{ __('Blogs') }}</h4>
+                <h4 class="page-title pull-left">{{ __('Comments') }}</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                    <li><span>{{ __('All Blogs') }}</span></li>
+                    <li><span>{{ __('Comment') }}</span></li>
                 </ul>
             </div>
         </div>
@@ -41,13 +41,9 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title float-left">{{ __('Blogs') }}</h4>
+                    <h4 class="header-title float-left">Blog Title - {{ ($blogs->title) }}</h4>
                     <p class="float-right mb-2">
-                        @if (auth()->user()->can('blogs.edit'))
-                        <a class="btn btn-primary text-white" href="{{ route('admin.blogs.create') }}">
-                            {{ __('Create New Blog') }}
-                        </a>
-                        @endif
+
                     </p>
                     <div class="clearfix"></div>
                     <div class="data-tables">
@@ -56,9 +52,9 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th width="5%">{{ __('Sl') }}</th>
-                                    <th width="10%">{{ __('Title') }}</th>
-                                    <th width="10%">{{ __('Heading') }}</th>
-                                    <th width="40%">{{ __('Image') }}</th>
+                                    <th width="10%">{{ __('Name') }}</th>
+                                    <th width="10%">{{ __('Email') }}</th>
+                                    <th width="15%">{{ __('Comments') }}</th>
                                     <th width="15%">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
@@ -66,32 +62,26 @@
                                 @foreach ($admins as $admin)
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $admin->title }}</td>
-                                    <td>{{ $admin->heading }}</td>
-                                    <td><img src="{{ asset('/blogs/') }}/{{ $admin->image }}" width="100px"
-                                            height="80px"></td>
+                                    <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->email }}</td>
+                                    <td>{{ $admin->comment }}</td>
                                     <td>
-                                        @if (auth()->user()->can('blogs.edit'))
-                                        <a class="btn btn-success text-white"
-                                            href="{{ route('admin.blogs.edit', $admin->id) }}">Edit</a>
+                                        <input type="checkbox" class="approve-toggle" data-id="{{ $admin->id }}" {{
+                                            $admin->is_approved == 1 ? 'checked' : ''
+                                        }}>
+                                        <label for="approve-toggle">Approved</label>
 
-                                        <a class="btn btn-warning text-white"
-                                            href="{{ route('admin.blogs.show', $admin->id) }}">Comments</a>
-                                        @endif
-
-                                        @if (auth()->user()->can('blogs.delete'))
                                         <a class="btn btn-danger text-white" href="javascript:void(0);"
                                             onclick="event.preventDefault(); if(confirm('Are you sure you want to delete?')) { document.getElementById('delete-form-{{ $admin->id }}').submit(); }">
                                             {{ __('Delete') }}
                                         </a>
 
                                         <form id="delete-form-{{ $admin->id }}"
-                                            action="{{ route('admin.blogs.destroy', $admin->id) }}" method="POST"
+                                            action="{{ route('admin.comment.destroy', $admin->id) }}" method="POST"
                                             style="display: none;">
                                             @method('DELETE')
                                             @csrf
                                         </form>
-                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -121,4 +111,29 @@
             });
         }
 </script>
+
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".approve-toggle").change(function () {
+            var commentId = $(this).data("id");
+            var isApproved = $(this).is(":checked") ? 1 : 0; // Get checkbox state
+
+            $.ajax({
+                url: "{{ url('/admin/comments') }}/" + commentId + "/approve",
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    is_approved: isApproved
+                },
+                success: function (response) {
+                    alert(response.success); // Show success message
+                },
+                error: function () {
+                }
+            });
+        });
+    });
+</script>

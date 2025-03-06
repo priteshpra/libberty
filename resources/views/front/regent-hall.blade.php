@@ -282,7 +282,7 @@
                 </div>
 
                 <div class="col-lg-8 formHidecnt">
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                    <form action="front/forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
                         data-aos-delay="200">
                         <div class="row gy-4">
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 11:22 AM
+-- Generation Time: Mar 06, 2025 at 09:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,6 +56,7 @@ CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `heading` varchar(150) NOT NULL,
+  `type` enum('anantaa','regent','banjara','blog') NOT NULL DEFAULT 'anantaa',
   `desc` varchar(256) NOT NULL,
   `image` varchar(250) NOT NULL,
   `is_popup` tinyint(4) NOT NULL DEFAULT 0,
@@ -68,8 +69,11 @@ CREATE TABLE `banners` (
 -- Dumping data for table `banners`
 --
 
-INSERT INTO `banners` (`id`, `title`, `heading`, `desc`, `image`, `is_popup`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'h', 'vh', 'vgv', '1733404791.png', 0, 1, '2024-12-05 07:49:51', '2024-12-26 01:01:59');
+INSERT INTO `banners` (`id`, `title`, `heading`, `type`, `desc`, `image`, `is_popup`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'regent-hall', 'regent-hall', 'regent', 'Weddings, Receptions, Parties, Corporates and More ', '1741159755.jpg', 0, 1, '2025-03-05 01:59:15', '2025-03-05 01:59:15'),
+(3, 'anantaa-hall', 'anantaa-hall', 'anantaa', 'Weddings, Receptions, Parties, Corporates and More', '1741159788.jpg', 0, 1, '2025-03-05 01:59:48', '2025-03-05 01:59:48'),
+(4, 'banjara-hall', 'banjara-hall', 'banjara', 'Weddings, Receptions, Parties, Corporates and More', '1741159818.jpg', 0, 1, '2025-03-05 02:00:18', '2025-03-05 03:15:49'),
+(5, 'Blog', 'Blog', 'blog', 'how off your uniqueness with a blog banner design that speaks to you', '1741170721.webp', 0, 1, '2025-03-05 04:44:54', '2025-03-05 05:02:01');
 
 -- --------------------------------------------------------
 
@@ -84,11 +88,28 @@ CREATE TABLE `blogs` (
   `image` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `author` varchar(100) DEFAULT NULL,
+  `is_featured` enum('1','0') NOT NULL DEFAULT '0',
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `blog_date` date DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `category_id`, `title`, `image`, `description`, `author`, `is_featured`, `status`, `blog_date`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Dolorum optio tempore voluptas dignissimos Large Blog', '1741171081.webp', '<p><strong>The landscape of web development continues to evolve at an unprecedented pace, bringing new technologies, frameworks, and methodologies that reshape how we build modern web applications.</strong></p>\r\n\r\n<p>As we delve into 2025, the web development ecosystem has transformed dramatically, introducing innovative approaches to building faster, more secure, and highly engaging web experiences. This comprehensive guide explores the latest trends and best practices that are defining the future of web development.</p>\r\n\r\n<p>Modern development environments emphasize collaboration and efficiency</p>\r\n\r\n<h2>The Rise of Web Components</h2>\r\n\r\n<p>Web Components have become increasingly crucial in modern web development, offering a standardized way to create reusable custom elements. Key advantages include:</p>\r\n\r\n<ul>\r\n	<li>Enhanced code reusability across different frameworks</li>\r\n	<li>Better encapsulation of functionality</li>\r\n	<li>Improved maintenance and scalability</li>\r\n	<li>Framework-agnostic component development</li>\r\n</ul>\r\n\r\n<h3>Key Trends in 2025</h3>\r\n\r\n<ul>\r\n	<li>Edge Computing and Serverless Architecture</li>\r\n	<li>Enhanced Security Measures</li>\r\n	<li>Progressive Web Apps (PWAs)</li>\r\n</ul>\r\n\r\n<h2>Performance Optimization</h2>\r\n\r\n<p>Performance remains a critical factor in web development, with an increasing focus on Core Web Vitals and user experience metrics. Modern applications must be optimized for both speed and efficiency.</p>\r\n\r\n<blockquote>\r\n<p>&quot;The future of web development lies not just in writing code, but in creating seamless, accessible, and performant experiences that work for everyone, everywhere.&quot;</p>\r\n<cite>Emily Thompson, Web Performance Architect</cite></blockquote>\r\n\r\n<p>Performance Metrics</p>\r\n\r\n<p>Focus on Core Web Vitals and user-centric performance metrics for better search rankings and user experience.</p>\r\n\r\n<p>Accessibility</p>\r\n\r\n<p>Implementing WCAG guidelines and ensuring web applications are accessible to all users across different devices.</p>\r\n\r\n<h2>Looking Forward</h2>\r\n\r\n<p>As we continue through 2025, web development practices will further evolve, embracing new technologies while maintaining a strong foundation in performance, accessibility, and user experience. Staying updated with these trends and best practices is crucial for developers looking to build modern, scalable web applications.</p>', 'Sam', '0', 1, '2025-03-01', '2025-03-05 05:08:01', '2025-03-05 05:08:01'),
+(2, NULL, 'Dolorum optio tempore voluptas dignissimos small Blog beside', '1741241124.webp', '<p><strong>The landscape of web development continues to evolve at an unprecedented pace, bringing new technologies, frameworks, and methodologies that reshape how we build modern web applications.</strong></p>\r\n\r\n<p>As we delve into 2025, the web development ecosystem has transformed dramatically, introducing innovative approaches to building faster, more secure, and highly engaging web experiences. This comprehensive guide explores the latest trends and best practices that are defining the future of web development.</p>\r\n\r\n<p>Modern development environments emphasize collaboration and efficiency</p>\r\n\r\n<h2>The Rise of Web Components</h2>\r\n\r\n<p>Web Components have become increasingly crucial in modern web development, offering a standardized way to create reusable custom elements. Key advantages include:</p>\r\n\r\n<ul>\r\n	<li>Enhanced code reusability across different frameworks</li>\r\n	<li>Better encapsulation of functionality</li>\r\n	<li>Improved maintenance and scalability</li>\r\n	<li>Framework-agnostic component development</li>\r\n</ul>\r\n\r\n<h3>Key Trends in 2025</h3>\r\n\r\n<ul>\r\n	<li>Edge Computing and Serverless Architecture</li>\r\n	<li>Enhanced Security Measures</li>\r\n	<li>Progressive Web Apps (PWAs)</li>\r\n</ul>\r\n\r\n<h2>Performance Optimization</h2>\r\n\r\n<p>Performance remains a critical factor in web development, with an increasing focus on Core Web Vitals and user experience metrics. Modern applications must be optimized for both speed and efficiency.</p>\r\n\r\n<blockquote>\r\n<p>&quot;The future of web development lies not just in writing code, but in creating seamless, accessible, and performant experiences that work for everyone, everywhere.&quot;</p>\r\n<cite>Emily Thompson, Web Performance Architect</cite></blockquote>\r\n\r\n<p>Performance Metrics</p>\r\n\r\n<p>Focus on Core Web Vitals and user-centric performance metrics for better search rankings and user experience.</p>\r\n\r\n<p>Accessibility</p>\r\n\r\n<p>Implementing WCAG guidelines and ensuring web applications are accessible to all users across different devices.</p>\r\n\r\n<h2>Looking Forward</h2>\r\n\r\n<p>As we continue through 2025, web development practices will further evolve, embracing new technologies while maintaining a strong foundation in performance, accessibility, and user experience. Staying updated with these trends and best practices is crucial for developers looking to build modern, scalable web applications.</p>', 'Rakesh', '0', 1, '2025-03-01', '2025-03-05 05:08:01', '2025-03-06 00:35:24'),
+(3, NULL, 'Dolorum optio tempore voluptas dignissimos One', '1741241158.webp', '<p><strong>The landscape of web development continues to evolve at an unprecedented pace, bringing new technologies, frameworks, and methodologies that reshape how we build modern web applications.</strong></p>\r\n\r\n<p>As we delve into 2025, the web development ecosystem has transformed dramatically, introducing innovative approaches to building faster, more secure, and highly engaging web experiences. This comprehensive guide explores the latest trends and best practices that are defining the future of web development.</p>\r\n\r\n<p>Modern development environments emphasize collaboration and efficiency</p>\r\n\r\n<h2>The Rise of Web Components</h2>\r\n\r\n<p>Web Components have become increasingly crucial in modern web development, offering a standardized way to create reusable custom elements. Key advantages include:</p>\r\n\r\n<ul>\r\n	<li>Enhanced code reusability across different frameworks</li>\r\n	<li>Better encapsulation of functionality</li>\r\n	<li>Improved maintenance and scalability</li>\r\n	<li>Framework-agnostic component development</li>\r\n</ul>\r\n\r\n<h3>Key Trends in 2025</h3>\r\n\r\n<ul>\r\n	<li>Edge Computing and Serverless Architecture</li>\r\n	<li>Enhanced Security Measures</li>\r\n	<li>Progressive Web Apps (PWAs)</li>\r\n</ul>\r\n\r\n<h2>Performance Optimization</h2>\r\n\r\n<p>Performance remains a critical factor in web development, with an increasing focus on Core Web Vitals and user experience metrics. Modern applications must be optimized for both speed and efficiency.</p>\r\n\r\n<blockquote>\r\n<p>&quot;The future of web development lies not just in writing code, but in creating seamless, accessible, and performant experiences that work for everyone, everywhere.&quot;</p>\r\n<cite>Emily Thompson, Web Performance Architect</cite></blockquote>\r\n\r\n<p>Performance Metrics</p>\r\n\r\n<p>Focus on Core Web Vitals and user-centric performance metrics for better search rankings and user experience.</p>\r\n\r\n<p>Accessibility</p>\r\n\r\n<p>Implementing WCAG guidelines and ensuring web applications are accessible to all users across different devices.</p>\r\n\r\n<h2>Looking Forward</h2>\r\n\r\n<p>As we continue through 2025, web development practices will further evolve, embracing new technologies while maintaining a strong foundation in performance, accessibility, and user experience. Staying updated with these trends and best practices is crucial for developers looking to build modern, scalable web applications.</p>', 'Rahul', '0', 1, '2025-03-01', '2025-03-05 05:08:01', '2025-03-06 00:35:58'),
+(4, NULL, 'Dolorum optio tempore voluptas dignissimos Two', '1741241181.webp', '<p><strong>The landscape of web development continues to evolve at an unprecedented pace, bringing new technologies, frameworks, and methodologies that reshape how we build modern web applications.</strong></p>\r\n\r\n<p>As we delve into 2025, the web development ecosystem has transformed dramatically, introducing innovative approaches to building faster, more secure, and highly engaging web experiences. This comprehensive guide explores the latest trends and best practices that are defining the future of web development.</p>\r\n\r\n<p>Modern development environments emphasize collaboration and efficiency</p>\r\n\r\n<h2>The Rise of Web Components</h2>\r\n\r\n<p>Web Components have become increasingly crucial in modern web development, offering a standardized way to create reusable custom elements. Key advantages include:</p>\r\n\r\n<ul>\r\n	<li>Enhanced code reusability across different frameworks</li>\r\n	<li>Better encapsulation of functionality</li>\r\n	<li>Improved maintenance and scalability</li>\r\n	<li>Framework-agnostic component development</li>\r\n</ul>\r\n\r\n<h3>Key Trends in 2025</h3>\r\n\r\n<ul>\r\n	<li>Edge Computing and Serverless Architecture</li>\r\n	<li>Enhanced Security Measures</li>\r\n	<li>Progressive Web Apps (PWAs)</li>\r\n</ul>\r\n\r\n<h2>Performance Optimization</h2>\r\n\r\n<p>Performance remains a critical factor in web development, with an increasing focus on Core Web Vitals and user experience metrics. Modern applications must be optimized for both speed and efficiency.</p>\r\n\r\n<blockquote>\r\n<p>&quot;The future of web development lies not just in writing code, but in creating seamless, accessible, and performant experiences that work for everyone, everywhere.&quot;</p>\r\n<cite>Emily Thompson, Web Performance Architect</cite></blockquote>\r\n\r\n<p>Performance Metrics</p>\r\n\r\n<p>Focus on Core Web Vitals and user-centric performance metrics for better search rankings and user experience.</p>\r\n\r\n<p>Accessibility</p>\r\n\r\n<p>Implementing WCAG guidelines and ensuring web applications are accessible to all users across different devices.</p>\r\n\r\n<h2>Looking Forward</h2>\r\n\r\n<p>As we continue through 2025, web development practices will further evolve, embracing new technologies while maintaining a strong foundation in performance, accessibility, and user experience. Staying updated with these trends and best practices is crucial for developers looking to build modern, scalable web applications.</p>', 'Neesha', '0', 1, '2025-03-01', '2025-03-05 05:08:01', '2025-03-06 00:36:21'),
+(5, NULL, 'Dolorum optio tempore voluptas dignissimos Three', '1741241207.webp', '<p><strong>The landscape of web development continues to evolve at an unprecedented pace, bringing new technologies, frameworks, and methodologies that reshape how we build modern web applications.</strong></p>\r\n\r\n<p>As we delve into 2025, the web development ecosystem has transformed dramatically, introducing innovative approaches to building faster, more secure, and highly engaging web experiences. This comprehensive guide explores the latest trends and best practices that are defining the future of web development.</p>\r\n\r\n<p>Modern development environments emphasize collaboration and efficiency</p>\r\n\r\n<h2>The Rise of Web Components</h2>\r\n\r\n<p>Web Components have become increasingly crucial in modern web development, offering a standardized way to create reusable custom elements. Key advantages include:</p>\r\n\r\n<ul>\r\n	<li>Enhanced code reusability across different frameworks</li>\r\n	<li>Better encapsulation of functionality</li>\r\n	<li>Improved maintenance and scalability</li>\r\n	<li>Framework-agnostic component development</li>\r\n</ul>\r\n\r\n<h3>Key Trends in 2025</h3>\r\n\r\n<ul>\r\n	<li>Edge Computing and Serverless Architecture</li>\r\n	<li>Enhanced Security Measures</li>\r\n	<li>Progressive Web Apps (PWAs)</li>\r\n</ul>\r\n\r\n<h2>Performance Optimization</h2>\r\n\r\n<p>Performance remains a critical factor in web development, with an increasing focus on Core Web Vitals and user experience metrics. Modern applications must be optimized for both speed and efficiency.</p>\r\n\r\n<blockquote>\r\n<p>&quot;The future of web development lies not just in writing code, but in creating seamless, accessible, and performant experiences that work for everyone, everywhere.&quot;</p>\r\n<cite>Emily Thompson, Web Performance Architect</cite></blockquote>\r\n\r\n<p>Performance Metrics</p>\r\n\r\n<p>Focus on Core Web Vitals and user-centric performance metrics for better search rankings and user experience.</p>\r\n\r\n<p>Accessibility</p>\r\n\r\n<p>Implementing WCAG guidelines and ensuring web applications are accessible to all users across different devices.</p>\r\n\r\n<h2>Looking Forward</h2>\r\n\r\n<p>As we continue through 2025, web development practices will further evolve, embracing new technologies while maintaining a strong foundation in performance, accessibility, and user experience. Staying updated with these trends and best practices is crucial for developers looking to build modern, scalable web applications.</p>', 'Pinkesh', '0', 1, '2025-03-01', '2025-03-05 05:08:01', '2025-03-06 00:36:47'),
+(6, NULL, 'At vero eos et accusamus et iusto odio dignissimos ducimus', '1741240208.webp', '<p>Nullam dictum felis eu pede mollis pretium integer tincidunt cras dapibus vivamus elementum semper nisi.</p>\r\n\r\n<h3><strong>The Future of Technology: Innovations Shaping Our World</strong></h3>\r\n\r\n<p>Technology is evolving at an unprecedented pace, revolutionizing the way we live, work, and communicate. From artificial intelligence to quantum computing, the digital landscape is undergoing a transformation that will redefine the future.</p>\r\n\r\n<p><strong>1. Artificial Intelligence &amp; Automation</strong><br />\r\nAI is no longer just a concept from science fiction; it is now deeply integrated into our daily lives. From voice assistants like Siri and Alexa to self-driving cars, AI is making processes more efficient and intelligent. Businesses are leveraging automation to streamline operations, reducing costs and enhancing productivity.</p>\r\n\r\n<p><strong>2. Quantum Computing: A New Era of Computing</strong><br />\r\nQuantum computers have the potential to solve complex problems at speeds unimaginable with traditional computers. Companies like Google and IBM are making significant strides in this field, opening doors for breakthroughs in medicine, cryptography, and scientific research.</p>\r\n\r\n<p><strong>3. The Rise of Sustainable Technology</strong><br />\r\nWith climate change being a major concern, sustainable tech innovations are gaining momentum. Solar energy, electric vehicles, and biodegradable materials are becoming more mainstream, promoting a greener future.</p>', 'Mark Wilson', '1', 1, '2025-03-05', '2025-03-06 00:20:08', '2025-03-06 00:28:43'),
+(7, NULL, 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet', '1741240254.webp', '<p>Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero sit amet adipiscing sem neque sed ipsum.</p>\r\n\r\n<h3><strong>The Future of Technology: Innovations Shaping Our World</strong></h3>\r\n\r\n<p>Technology is evolving at an unprecedented pace, revolutionizing the way we live, work, and communicate. From artificial intelligence to quantum computing, the digital landscape is undergoing a transformation that will redefine the future.</p>\r\n\r\n<p><strong>1. Artificial Intelligence &amp; Automation</strong><br />\r\nAI is no longer just a concept from science fiction; it is now deeply integrated into our daily lives. From voice assistants like Siri and Alexa to self-driving cars, AI is making processes more efficient and intelligent. Businesses are leveraging automation to streamline operations, reducing costs and enhancing productivity.</p>\r\n\r\n<p><strong>2. Quantum Computing: A New Era of Computing</strong><br />\r\nQuantum computers have the potential to solve complex problems at speeds unimaginable with traditional computers. Companies like Google and IBM are making significant strides in this field, opening doors for breakthroughs in medicine, cryptography, and scientific research.</p>\r\n\r\n<p><strong>3. The Rise of Sustainable Technology</strong><br />\r\nWith climate change being a major concern, sustainable tech innovations are gaining momentum. Solar energy, electric vehicles, and biodegradable materials are becoming more mainstream, promoting a greener future.</p>\r\n\r\n<p><strong>4. 5G &amp; the Internet of Things (IoT)</strong><br />\r\nThe deployment of 5G networks is set to revolutionize connectivity, enabling ultra-fast internet speeds and enhancing IoT devices. Smart homes, wearable health devices, and connected cities are all part of this digital evolution.</p>\r\n\r\n<p><strong>5. The Metaverse &amp; Virtual Reality</strong><br />\r\nThe concept of the metaverse is taking shape, with companies investing in immersive virtual worlds. From gaming to business meetings, VR and AR are blurring the lines between reality and the digital realm.</p>', 'Mark Wilson', '1', 1, '2025-03-11', '2025-03-06 00:20:54', '2025-03-06 00:29:00'),
+(8, NULL, 'Et harum quidem rerum facilis est et expedita distinctio', '1741240291.webp', '<p>Donec quam felis ultricies nec pellentesque eu pretium quis sem nulla consequat massa quis enim.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><strong>The Future of Technology: Innovations Shaping Our World</strong></h3>\r\n\r\n<p>Technology is evolving at an unprecedented pace, revolutionizing the way we live, work, and communicate. From artificial intelligence to quantum computing, the digital landscape is undergoing a transformation that will redefine the future.</p>\r\n\r\n<p><strong>1. Artificial Intelligence &amp; Automation</strong><br />\r\nAI is no longer just a concept from science fiction; it is now deeply integrated into our daily lives. From voice assistants like Siri and Alexa to self-driving cars, AI is making processes more efficient and intelligent. Businesses are leveraging automation to streamline operations, reducing costs and enhancing productivity.</p>\r\n\r\n<p><strong>2. Quantum Computing: A New Era of Computing</strong><br />\r\nQuantum computers have the potential to solve complex problems at speeds unimaginable with traditional computers. Companies like Google and IBM are making significant strides in this field, opening doors for breakthroughs in medicine, cryptography, and scientific research.</p>\r\n\r\n<p><strong>3. The Rise of Sustainable Technology</strong><br />\r\nWith climate change being a major concern, sustainable tech innovations are gaining momentum. Solar energy, electric vehicles, and biodegradable materials are becoming more mainstream, promoting a greener future.</p>\r\n\r\n<p><strong>4. 5G &amp; the Internet of Things (IoT)</strong><br />\r\nThe deployment of 5G networks is set to revolutionize connectivity, enabling ultra-fast internet speeds and enhancing IoT devices. Smart homes, wearable health devices, and connected cities are all part of this digital evolution.</p>\r\n\r\n<p><strong>5. The Metaverse &amp; Virtual Reality</strong><br />\r\nThe concept of the metaverse is taking shape, with companies investing in immersive virtual worlds. From gaming to business meetings, VR and AR are blurring the lines between reality and the digital realm.</p>', 'Emma Davis', '1', 1, '2025-02-20', '2025-03-06 00:21:31', '2025-03-06 00:29:11'),
+(9, NULL, 'At vero eos et accusamus et iusto odio dignissimos ducimus', '1741240329.webp', '<p>Nullam dictum felis eu pede mollis pretium integer tincidunt cras dapibus vivamus elementum semper nisi.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><strong>The Future of Technology: Innovations Shaping Our World</strong></h3>\r\n\r\n<p>Technology is evolving at an unprecedented pace, revolutionizing the way we live, work, and communicate. From artificial intelligence to quantum computing, the digital landscape is undergoing a transformation that will redefine the future.</p>\r\n\r\n<p><strong>1. Artificial Intelligence &amp; Automation</strong><br />\r\nAI is no longer just a concept from science fiction; it is now deeply integrated into our daily lives. From voice assistants like Siri and Alexa to self-driving cars, AI is making processes more efficient and intelligent. Businesses are leveraging automation to streamline operations, reducing costs and enhancing productivity.</p>\r\n\r\n<p><strong>2. Quantum Computing: A New Era of Computing</strong><br />\r\nQuantum computers have the potential to solve complex problems at speeds unimaginable with traditional computers. Companies like Google and IBM are making significant strides in this field, opening doors for breakthroughs in medicine, cryptography, and scientific research.</p>\r\n\r\n<p><strong>3. The Rise of Sustainable Technology</strong><br />\r\nWith climate change being a major concern, sustainable tech innovations are gaining momentum. Solar energy, electric vehicles, and biodegradable materials are becoming more mainstream, promoting a greener future.</p>\r\n\r\n<p><strong>4. 5G &amp; the Internet of Things (IoT)</strong><br />\r\nThe deployment of 5G networks is set to revolutionize connectivity, enabling ultra-fast internet speeds and enhancing IoT devices. Smart homes, wearable health devices, and connected cities are all part of this digital evolution.</p>\r\n\r\n<p><strong>5. The Metaverse &amp; Virtual Reality</strong><br />\r\nThe concept of the metaverse is taking shape, with companies investing in immersive virtual worlds. From gaming to business meetings, VR and AR are blurring the lines between reality and the digital realm.</p>', 'Sarah Johnson', '1', 1, '2025-03-01', '2025-03-06 00:22:09', '2025-03-06 00:29:21'),
+(10, NULL, 'Et harum quidem rerum facilis est et expedita distinctio', '1741240362.webp', '<p>Donec quam felis ultricies nec pellentesque eu pretium quis sem nulla consequat massa quis enim.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h3><strong>The Future of Technology: Innovations Shaping Our World</strong></h3>\r\n\r\n<p>Technology is evolving at an unprecedented pace, revolutionizing the way we live, work, and communicate. From artificial intelligence to quantum computing, the digital landscape is undergoing a transformation that will redefine the future.</p>\r\n\r\n<p><strong>1. Artificial Intelligence &amp; Automation</strong><br />\r\nAI is no longer just a concept from science fiction; it is now deeply integrated into our daily lives. From voice assistants like Siri and Alexa to self-driving cars, AI is making processes more efficient and intelligent. Businesses are leveraging automation to streamline operations, reducing costs and enhancing productivity.</p>\r\n\r\n<p><strong>2. Quantum Computing: A New Era of Computing</strong><br />\r\nQuantum computers have the potential to solve complex problems at speeds unimaginable with traditional computers. Companies like Google and IBM are making significant strides in this field, opening doors for breakthroughs in medicine, cryptography, and scientific research.</p>\r\n\r\n<p><strong>3. The Rise of Sustainable Technology</strong><br />\r\nWith climate change being a major concern, sustainable tech innovations are gaining momentum. Solar energy, electric vehicles, and biodegradable materials are becoming more mainstream, promoting a greener future.</p>\r\n\r\n<p><strong>4. 5G &amp; the Internet of Things (IoT)</strong><br />\r\nThe deployment of 5G networks is set to revolutionize connectivity, enabling ultra-fast internet speeds and enhancing IoT devices. Smart homes, wearable health devices, and connected cities are all part of this digital evolution.</p>\r\n\r\n<p><strong>5. The Metaverse &amp; Virtual Reality</strong><br />\r\nThe concept of the metaverse is taking shape, with companies investing in immersive virtual worlds. From gaming to business meetings, VR and AR are blurring the lines between reality and the digital realm.</p>', 'David Brown', '1', 1, '2025-03-02', '2025-03-06 00:22:42', '2025-03-06 00:29:30');
 
 -- --------------------------------------------------------
 
@@ -147,6 +168,34 @@ CREATE TABLE `cms` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `blog_id` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
+  `likes` int(11) DEFAULT 0,
+  `is_approved` tinyint(1) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `blog_id`, `parent_id`, `name`, `email`, `comment`, `likes`, `is_approved`, `created_at`, `updated_at`) VALUES
+(5, 1, NULL, 'pritesh.prajapati', 'test@example.com', 'aaa', 1, 1, '2025-03-06 02:49:42', '2025-03-06 08:52:03'),
+(6, 1, NULL, 'CAs', 'admin@gmail.com', 'aa121', 2, 1, '2025-03-06 02:49:54', '2025-03-06 08:51:52'),
+(7, 1, 5, 'rakesh', 'rushi.dave195@gmail.com', 'aa22', 0, 1, '2025-03-06 03:01:35', '2025-03-06 08:31:41');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `events`
 --
 
@@ -183,6 +232,35 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallerys`
+--
+
+CREATE TABLE `gallerys` (
+  `id` int(11) NOT NULL,
+  `title` varchar(150) DEFAULT NULL,
+  `heading` varchar(200) DEFAULT NULL,
+  `type` enum('anantaa','regent','banjara') NOT NULL DEFAULT 'anantaa',
+  `image` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gallerys`
+--
+
+INSERT INTO `gallerys` (`id`, `title`, `heading`, `type`, `image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Anantaa Hall', 'Anantaa Hall', 'anantaa', '1741155369.webp', 1, '2025-03-05 06:16:09', '2025-03-05 06:16:09'),
+(2, 'Anantaa Hall', 'Anantaa Hall', 'anantaa', '1741155432.webp', 1, '2025-03-05 06:17:12', '2025-03-05 06:17:12'),
+(3, 'Regent Hall', 'Regent Hall', 'regent', '1741155470.webp', 1, '2025-03-05 06:17:50', '2025-03-05 06:17:50'),
+(4, 'Regent Hall', 'Regent Hall', 'regent', '1741155481.webp', 1, '2025-03-05 06:18:01', '2025-03-05 06:18:01'),
+(5, 'Banjara Hall', 'Banjara Hall', 'banjara', '1741155508.webp', 1, '2025-03-05 06:18:28', '2025-03-05 06:18:28'),
+(6, 'Banjara Hall', 'Banjara Hall', 'banjara', '1741155517.webp', 1, '2025-03-05 06:18:37', '2025-03-05 06:18:37');
 
 -- --------------------------------------------------------
 
@@ -571,6 +649,14 @@ ALTER TABLE `cms`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `blog_id` (`blog_id`),
+  ADD KEY `parent_id` (`parent_id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -580,6 +666,12 @@ ALTER TABLE `events`
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallerys`
+--
+ALTER TABLE `gallerys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -672,13 +764,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `blog_categories`
@@ -699,6 +791,12 @@ ALTER TABLE `cms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
@@ -709,6 +807,12 @@ ALTER TABLE `events`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `gallerys`
+--
+ALTER TABLE `gallerys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `leads`
@@ -761,6 +865,13 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`blog_id`) REFERENCES `blogs` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`parent_id`) REFERENCES `comments` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `model_has_permissions`

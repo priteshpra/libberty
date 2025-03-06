@@ -20,7 +20,7 @@
         <a href=""><i class="bi bi-linkedin"></i></a>-->
         </div>
         <div class="container">
-            <div class="copyright">
+            <div class="copyright text-center">
                 <span>Copyright</span> <strong class="px-1 sitename">A’La Liberty</strong> <span>All Rights
                     Reserved</span>
             </div>
