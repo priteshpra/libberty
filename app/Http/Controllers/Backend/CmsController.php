@@ -43,6 +43,7 @@ class CmsController extends Controller
         $admin = new Cms();
         $admin->page_name = $request->page_name;
         $admin->description = $request->description;
+        $admin->type = $request->type;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -87,6 +88,7 @@ class CmsController extends Controller
         $admin = Cms::findOrFail($id);
         $admin->page_name = $request->page_name;
         $admin->description = $request->description;
+        $admin->type = $request->type;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();

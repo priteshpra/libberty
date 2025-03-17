@@ -124,7 +124,7 @@ $usr = Auth::guard('admin')->user();
                     </li>
                     @endif
 
-                    {{-- @if ($usr->can('cms.create') || $usr->can('cms.view') || $usr->can('cms.edit') ||
+                    @if ($usr->can('cms.create') || $usr->can('cms.view') || $usr->can('cms.edit') ||
                     $usr->can('cms.delete'))
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i
@@ -146,7 +146,7 @@ $usr = Auth::guard('admin')->user();
                             @endif
                         </ul>
                     </li>
-                    @endif --}}
+                    @endif
 
                     @if ($usr->can('blogs.create') || $usr->can('blogs.view') || $usr->can('blogs.edit') ||
                     $usr->can('blogs.delete'))

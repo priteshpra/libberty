@@ -24,7 +24,7 @@ CMS Edit - Admin Panel
                 <h4 class="page-title pull-left">CMS Edit</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('admin.admins.index') }}">All CMS</a></li>
+                    <li><a href="{{ route('admin.cms.index') }}">All CMS</a></li>
                     <li><span>Edit CMS - {{ $admin->name }}</span></li>
                 </ul>
             </div>
@@ -57,9 +57,31 @@ CMS Edit - Admin Panel
                         </div>
 
                         <div class="form-row">
-                            <label for="password">Description</label>
-                            <textarea class="form-control" id="description"
-                                name="description">{{ $admin->description }}</textarea>
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="password">Description</label>
+                                <textarea class="form-control" id="description"
+                                    name="description">{{ $admin->description }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="username">Page Name</label>
+                                <select class="form-control " id="type" name="type" required>
+                                    <option value="anantaa" {{ old('type')=='anantaa' ? 'selected' : '' }} {{ $admin->
+                                        type=='anantaa'
+                                        ? 'selected' : '' }}>Anantaa
+                                    </option>
+                                    <option value="regent" {{ old('type')=='regent' ? 'selected' : '' }} {{ $admin->
+                                        type=='regent'
+                                        ? 'selected' : '' }}>Regent
+                                    </option>
+                                    <option value="banjara" {{ old('type')=='banjara' ? 'selected' : '' }} {{ $admin->
+                                        type=='banjara'
+                                        ? 'selected' : '' }}>Banjara
+                                    </option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="form-row">
@@ -67,10 +89,10 @@ CMS Edit - Admin Panel
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="username">Status</label>
                                 <select class="form-control " id="status" name="status" required>
-                                    <option value="1" {{ old('status')=='1' ? 'selected' : '' }} {{ .$admin->status=='1'
+                                    <option value="1" {{ old('status')=='1' ? 'selected' : '' }} {{ $admin->status=='1'
                                         ? 'selected' : '' }}>Active
                                     </option>
-                                    <option value="0" {{ old('status')=='0' ? 'selected' : '' }} {{ .$admin->status=='0'
+                                    <option value="0" {{ old('status')=='0' ? 'selected' : '' }} {{ $admin->status=='0'
                                         ? 'selected' : '' }}>Inactive
                                     </option>
                                 </select>
@@ -87,6 +109,13 @@ CMS Edit - Admin Panel
 
     </div>
 </div>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace('description');
+    setTimeout(() => {
+        $('.cke_notification_warning').hide();
+    }, 1000);
+</script>
 @endsection
 
 @section('scripts')

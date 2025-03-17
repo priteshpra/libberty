@@ -111,7 +111,8 @@
 
     <section class="Packages">
         <div class="container">
-            <h2 class="text-center mb-3">REGENT HALL PACKAGES</h2>
+            {!! $cmsData->description !!}
+            {{-- <h2 class="text-center mb-3">REGENT HALL PACKAGES</h2>
             <div class="col-lg-8 offset-lg-2 pcktable">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover mb-0">
@@ -229,7 +230,7 @@
                     </table>
                 </div>
                 <div class="text-center table-active text-white"></div>
-            </div>
+            </div> --}}
         </div>
     </section>
 

@@ -96,7 +96,8 @@
     </section><!-- /Portfolio Details Section -->
     <section class="Packages">
         <div class="container">
-            <h2 class="text-center mb-3">ANANTAA HALL PACKAGES</h2>
+            {!! $cmsData->description !!}
+            {{-- <h2 class="text-center mb-3">ANANTAA HALL PACKAGES</h2>
             <div class="col-lg-8 offset-lg-2 pcktable">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover mb-0">
@@ -254,7 +255,7 @@
                     </table>
                 </div>
                 <div class="text-center table-active text-white py-2"></div>
-            </div>
+            </div>--}}
         </div>
     </section>
 

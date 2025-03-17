@@ -50,9 +50,9 @@ CMS Create - Admin Panel
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="name">Title</label>
-                                <input type="text" class="form-control" id="title" name="title"
-                                    placeholder="Enter Title" required autofocus value="{{ old('name') }}">
+                                <label for="name">Page Name</label>
+                                <input type="text" class="form-control" id="page_name" name="page_name"
+                                    placeholder="Enter Page Name" required autofocus value="{{ old('page_name') }}">
                             </div>
 
                         </div>
@@ -61,6 +61,19 @@ CMS Create - Admin Panel
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Description</label>
                                 <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label for="username">Page Name</label>
+                                <select class="form-control " id="type" name="type" required>
+                                    <option value="anantaa" {{ old('type')=='anantaa' ? 'selected' : '' }}>Anantaa
+                                    </option>
+                                    <option value="regent" {{ old('type')=='regent' ? 'selected' : '' }}>Regent
+                                    </option>
+                                    <option value="banjara" {{ old('type')=='banjara' ? 'selected' : '' }}>Banjara
+                                    </option>
+                                </select>
                             </div>
                         </div>
 
@@ -87,6 +100,13 @@ CMS Create - Admin Panel
 
     </div>
 </div>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace('description');
+    setTimeout(() => {
+        $('.cke_notification_warning').hide();
+    }, 1000);
+</script>
 @endsection
 
 @section('scripts')

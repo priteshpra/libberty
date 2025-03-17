@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Cms;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,8 @@ class HomeController extends Controller
         $galleryRegent = Gallery::where(['status' => 1, 'type' => 'regent'])->get();
         $bannerRegent = Banner::where(['status' => 1, 'type' => 'regent'])->orderBy('id', 'desc')->limit('1')->first();
         // return view('home');
-        return  view('front.regent-hall', compact('title', 'galleryRegent', 'bannerRegent'));
+        $cmsData = Cms::where(['status' => 1, 'type' => 'regent'])->first();
+        return  view('front.regent-hall', compact('title', 'galleryRegent', 'bannerRegent', 'cmsData'));
     }
 
 
@@ -63,7 +65,8 @@ class HomeController extends Controller
     {
         $galleryAnantaa = Gallery::where(['status' => 1, 'type' => 'anantaa'])->get();
         $bannerAnantaa = Banner::where(['status' => 1, 'type' => 'anantaa'])->orderBy('id', 'desc')->limit('1')->first();
-        return  view('front.ananta-hall', compact('galleryAnantaa', 'bannerAnantaa'));
+        $cmsData = Cms::where(['status' => 1, 'type' => 'anantaa'])->first();
+        return  view('front.ananta-hall', compact('galleryAnantaa', 'bannerAnantaa', 'cmsData'));
     }
 
 
@@ -76,7 +79,8 @@ class HomeController extends Controller
     {
         $galleryBanjara = Gallery::where(['status' => 1, 'type' => 'banjara'])->get();
         $bannerBanjara = Banner::where(['status' => 1, 'type' => 'banjara'])->orderBy('id', 'desc')->limit('1')->first();
-        return  view('front.banjara-hall', compact('galleryBanjara', 'bannerBanjara'));
+        $cmsData = Cms::where(['status' => 1, 'type' => 'banjara'])->first();
+        return  view('front.banjara-hall', compact('galleryBanjara', 'bannerBanjara', 'cmsData'));
     }
 
     /**
