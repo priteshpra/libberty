@@ -16,7 +16,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $this->checkAuthorization(auth()->user(), ['testimonial.create']);
+        // $this->checkAuthorization(auth()->user(), ['testimonial.create']);
 
         return view('backend.pages.testimonials.index', [
             'admins' => Testimonial::all(),
@@ -28,7 +28,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $this->checkAuthorization(auth()->user(), ['testimonial.create']);
+        // $this->checkAuthorization(auth()->user(), ['testimonial.create']);
 
         return view('backend.pages.testimonials.create', []);
     }
@@ -38,17 +38,16 @@ class TestimonialController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->checkAuthorization(auth()->user(), ['testimonial.create']);
+        // $this->checkAuthorization(auth()->user(), ['testimonial.create']);
 
         $admin = new Testimonial();
         $admin->title = $request->title;
-        $admin->heading = $request->heading;
-        $admin->is_popup = isset($request->is_popup) && $request->is_popup == 'on' ? 1 : 0;
-        $admin->desc = $request->desc;
+        $admin->designation = $request->designation;
+        $admin->description = $request->description;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('banners'), $imageName); // Save to 'public/uploads'
+            $image->move(public_path('testimonials'), $imageName); // Save to 'public/uploads'
             $admin->image = $imageName;
         }
         $admin->save();
@@ -70,7 +69,7 @@ class TestimonialController extends Controller
      */
     public function edit(int $id): Renderable
     {
-        $this->checkAuthorization(auth()->user(), ['testimonial.edit']);
+        // $this->checkAuthorization(auth()->user(), ['testimonial.edit']);
 
         $admin = Testimonial::findOrFail($id);
         return view('backend.pages.testimonials.edit', [
@@ -84,16 +83,15 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, int $id): RedirectResponse
     {
-        $this->checkAuthorization(auth()->user(), ['testimonial.edit']);
+        // $this->checkAuthorization(auth()->user(), ['testimonial.edit']);
         $admin = Testimonial::findOrFail($id);
         $admin->title = $request->title;
-        $admin->heading = $request->heading;
-        $admin->is_popup = isset($request->is_popup) && $request->is_popup == 'on' ? 1 : 0;
-        $admin->desc = $request->desc;
+        $admin->designation = $request->designation;
+        $admin->description = $request->description;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('banners'), $imageName); // Save to 'public/uploads'
+            $image->move(public_path('testimonials'), $imageName); // Save to 'public/uploads'
             $admin->image = $imageName;
         }
         $admin->save();
@@ -107,7 +105,7 @@ class TestimonialController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        $this->checkAuthorization(auth()->user(), ['testimonial.delete']);
+        // $this->checkAuthorization(auth()->user(), ['testimonial.delete']);
 
         $admin = Testimonial::findOrFail($id);
         $admin->delete();

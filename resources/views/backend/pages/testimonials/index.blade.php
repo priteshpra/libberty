@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-{{ __('Banners - Admin Panel') }}
+{{ __('Testimonials - Admin Panel') }}
 @endsection
 
 @section('styles')
@@ -44,8 +44,8 @@
                     <h4 class="header-title float-left">{{ __('Testimonials') }}</h4>
                     <p class="float-right mb-2">
                         @if (auth()->user()->can('banner.edit'))
-                        <a class="btn btn-primary text-white" href="{{ route('admin.banner.create') }}">
-                            {{ __('Create New Banner') }}
+                        <a class="btn btn-primary text-white" href="{{ route('admin.testimonial.create') }}">
+                            {{ __('Create New Testimonial') }}
                         </a>
                         @endif
                     </p>
@@ -56,7 +56,8 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th width="5%">{{ __('Sl') }}</th>
-                                    <th width="10%">{{ __('Title') }}</th>
+                                    <th width="10%">{{ __('Name') }}</th>
+                                    <th width="10%">{{ __('Designation') }}</th>
                                     <th width="40%">{{ __('Image') }}</th>
                                     <th width="15%">{{ __('Action') }}</th>
                                 </tr>
@@ -66,15 +67,16 @@
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
                                     <td>{{ $admin->title }}</td>
+                                    <td>{{ $admin->designation }}</td>
                                     <td><img src="{{ asset('/testimonials/') }}/{{ $admin->image }}" width="100px"
                                             height="80px"></td>
                                     <td>
-                                        @if (auth()->user()->can('testimonial.edit'))
+                                        {{-- @if (auth()->user()->can('testimonial.edit')) --}}
                                         <a class="btn btn-success text-white"
                                             href="{{ route('admin.testimonial.edit', $admin->id) }}">Edit</a>
-                                        @endif
+                                        {{-- @endif --}}
 
-                                        @if (auth()->user()->can('testimonial.delete'))
+                                        {{-- @if (auth()->user()->can('testimonial.delete')) --}}
                                         <a class="btn btn-danger text-white" href="javascript:void(0);"
                                             onclick="event.preventDefault(); if(confirm('Are you sure you want to delete?')) { document.getElementById('delete-form-{{ $admin->id }}').submit(); }">
                                             {{ __('Delete') }}
@@ -86,7 +88,7 @@
                                             @method('DELETE')
                                             @csrf
                                         </form>
-                                        @endif
+                                        {{-- @endif --}}
                                     </td>
                                 </tr>
                                 @endforeach

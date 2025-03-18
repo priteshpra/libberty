@@ -287,30 +287,30 @@ $usr = Auth::guard('admin')->user();
                     </li> --}}
                     @endif
 
-                    @if ($usr->can('testimonial.create') || $usr->can('testimonial.view') ||
+                    {{-- @if ($usr->can('testimonial.create') || $usr->can('testimonial.view') ||
                     $usr->can('testimonial.edit') ||
-                    $usr->can('testimonial.delete'))
-                    {{-- <li>
+                    $usr->can('testimonial.delete')) --}}
+                    <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i
                                 class="fa fa-paper-plane"></i><span>Testimonials</span>
                         </a>
                         <ul
                             class="collapse {{ Route::is('admin.testimonial.create') || Route::is('admin.testimonial.index') || Route::is('admin.testimonial.edit') || Route::is('admin.testimonial.show') ? 'in' : '' }}">
 
-                            @if ($usr->can('testimonial.view'))
+                            {{-- @if ($usr->can('testimonial.view')) --}}
                             <li
                                 class="{{ Route::is('admin.testimonial.index')  || Route::is('admin.testimonial.edit') ? 'active' : '' }}">
                                 <a href="{{ route('admin.testimonial.index') }}">All Testimonials</a>
                             </li>
-                            @endif
+                            {{-- @endif --}}
 
-                            @if ($usr->can('testimonial.create'))
+                            {{-- @if ($usr->can('testimonial.create')) --}}
                             <li class="{{ Route::is('admin.testimonial.create')  ? 'active' : '' }}"><a
                                     href="{{ route('admin.testimonial.create') }}">Create Testimonial</a></li>
-                            @endif
+                            {{-- @endif --}}
                         </ul>
-                    </li> --}}
-                    @endif
+                    </li>
+                    {{-- @endif --}}
                 </ul>
             </nav>
         </div>

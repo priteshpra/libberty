@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BlogsController;
 use App\Http\Controllers\Backend\CmsController;
 use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\BlogController;
 
 /*
@@ -59,7 +60,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('blogs', BlogsController::class);
     Route::resource('leads', LeadsController::class);
     Route::resource('comment', CommentController::class);
-
+    Route::resource('testimonial', TestimonialController::class);
 
     // Login Routes.
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

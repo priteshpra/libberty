@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Cms;
 use App\Models\Gallery;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -37,7 +38,8 @@ class HomeController extends Controller
         $galleryAnantaa = Gallery::where(['status' => 1, 'type' => 'anantaa'])->get();
         $galleryRegent = Gallery::where(['status' => 1, 'type' => 'regent'])->get();
         $galleryBanjara = Gallery::where(['status' => 1, 'type' => 'banjara'])->get();
-        return  view('front.index', compact('galleryAnantaa', 'galleryRegent', 'galleryBanjara'));
+        $testimonials = Testimonial::where(['status' => 1])->get();
+        return  view('front.index', compact('galleryAnantaa', 'galleryRegent', 'galleryBanjara', 'testimonials'));
     }
 
     /**

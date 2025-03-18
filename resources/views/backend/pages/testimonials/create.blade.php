@@ -50,16 +50,23 @@ Testimonial Create - Admin Panel
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="name">Title</label>
-                                <input type="text" class="form-control" id="title" name="title"
-                                    placeholder="Enter Title" required autofocus value="{{ old('name') }}">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Name"
+                                    required autofocus value="{{ old('name') }}">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="name">Designation</label>
+                                <input type="text" class="form-control" id="designation" name="designation"
+                                    placeholder="Enter Designation" required autofocus value="{{ old('designation') }}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-12 col-sm-12">
                                 <label for="password">Description</label>
-                                <textarea class="form-control" id="desc" name="desc"></textarea>
+                                <textarea class="form-control" id="desc" name="description"></textarea>
                             </div>
                         </div>
 

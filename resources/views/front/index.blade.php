@@ -90,6 +90,46 @@
         box-sizing: border-box;
         /* Include padding and border in width */
     }
+
+    .testimonials {
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .testimonial-item {
+        text-align: center;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-img {
+        width: 80px;
+        /* Adjust as needed */
+        height: 80px;
+        border-radius: 50%;
+        /* Makes the image round */
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+
+    .testimonial-item p {
+        font-size: 18px;
+        color: #555;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
+        /* Ensure vertical alignment */
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 @endsection
 
@@ -308,6 +348,38 @@
             </div>
         </div>
     </section><!-- End Portfolio Section -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <!-- ======= Testimonial Section ======= -->
+    <section id="testimonials" class="testimonials">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Testimonials</h2>
+            </div>
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    @foreach ($testimonials as $testimonial)
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <!-- Profile Picture -->
+                            <img src="{{ asset('testimonials/'.$testimonial->image) }}" class="testimonial-img"
+                                alt="{{ $testimonial->title }}">
+
+                            <!-- Testimonial Content -->
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                {{ $testimonial->description }}
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <h3>{{ $testimonial->title }}</h3>
+                            <h4>{{ $testimonial->designation }}</h4>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section><!-- End Testimonial Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -426,9 +498,28 @@
         </div>
     </section><!-- /Contact Section -->
 </body>
+
 @endsection
 
 @section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".testimonials-slider", {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            slidesPerView: 1, // Show one slide at a time
+            centeredSlides: true,
+        });
+    });
+</script>
 <!-- Start datatable js -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>

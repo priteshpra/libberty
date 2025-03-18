@@ -24,7 +24,7 @@ Testimonial Edit - Admin Panel
                 <h4 class="page-title pull-left">Testimonial Edit</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('admin.admins.index') }}">All Testimonials</a></li>
+                    <li><a href="{{ route('admin.testimonial.index') }}">All Testimonials</a></li>
                     <li><span>Edit Testimonial - {{ $admin->title }}</span></li>
                 </ul>
             </div>
@@ -45,20 +45,30 @@ Testimonial Edit - Admin Panel
                     <h4 class="header-title">Edit Testimonial - {{ $admin->title }}</h4>
                     @include('backend.layouts.partials.messages')
 
-                    <form action="{{ route('admin.testimonial.update', $admin->id) }}" method="POST">
+                    <form action="{{ route('admin.testimonial.update', $admin->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 col-sm-12">
-                                <label for="name">Title</label>
-                                <input type="text" class="form-control" id="title" name="title"
-                                    placeholder="Enter Title" value="{{ $admin->title }}" required autofocus>
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter Name"
+                                    value="{{ $admin->title }}" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 col-sm-12">
+                                <label for="name">Designation</label>
+                                <input type="text" class="form-control" id="designation" name="designation"
+                                    placeholder="Enter Designation" required autofocus
+                                    value="{{ $admin->designation }}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <label for="password">Description</label>
-                            <textarea class="form-control" id="desc" name="desc">{{ $admin->desc }}</textarea>
+                            <textarea class="form-control" id="desc"
+                                name="description">{{ $admin->description }}</textarea>
                         </div>
 
                         <div class="form-row">
