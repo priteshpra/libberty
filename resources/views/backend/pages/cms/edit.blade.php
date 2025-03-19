@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-CMS Edit - Admin Panel
+Inner Pages Edit - Admin Panel
 @endsection
 
 @section('styles')
@@ -21,11 +21,11 @@ CMS Edit - Admin Panel
     <div class="row align-items-center">
         <div class="col-sm-6">
             <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">CMS Edit</h4>
+                <h4 class="page-title pull-left">Inner Pages Edit</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('admin.cms.index') }}">All CMS</a></li>
-                    <li><span>Edit CMS - {{ $admin->name }}</span></li>
+                    <li><a href="{{ route('admin.cms.index') }}">All Inner Pages</a></li>
+                    <li><span>Edit Inner Pages - {{ $admin->name }}</span></li>
                 </ul>
             </div>
         </div>
@@ -42,7 +42,7 @@ CMS Edit - Admin Panel
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title">Edit CMS - {{ $admin->name }}</h4>
+                    <h4 class="header-title">Edit Inner Pages - {{ $admin->page_name }}</h4>
                     @include('backend.layouts.partials.messages')
 
                     <form action="{{ route('admin.cms.update', $admin->id) }}" method="POST">

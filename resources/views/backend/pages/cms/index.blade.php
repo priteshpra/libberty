@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title')
-{{ __('CMS - Admin Panel') }}
+{{ __('Inner Pages - Admin Panel') }}
 @endsection
 
 @section('styles')
@@ -21,10 +21,10 @@
     <div class="row align-items-center">
         <div class="col-sm-6">
             <div class="breadcrumbs-area clearfix">
-                <h4 class="page-title pull-left">{{ __('CMS') }}</h4>
+                <h4 class="page-title pull-left">{{ __('Inner Pages') }}</h4>
                 <ul class="breadcrumbs pull-left">
                     <li><a href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a></li>
-                    <li><span>{{ __('All CMS') }}</span></li>
+                    <li><span>{{ __('All Inner Pages') }}</span></li>
                 </ul>
             </div>
         </div>
@@ -41,12 +41,12 @@
         <div class="col-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title float-left">{{ __('CMS') }}</h4>
+                    <h4 class="header-title float-left">{{ __('Inner Pages') }}</h4>
                     <p class="float-right mb-2">
                         @if (auth()->user()->can('cms.edit'))
-                        <a class="btn btn-primary text-white" href="{{ route('admin.cms.create') }}">
+                        {{-- <a class="btn btn-primary text-white" href="{{ route('admin.cms.create') }}">
                             {{ __('Create New CMS') }}
-                        </a>
+                        </a> --}}
                         @endif
                     </p>
                     <div class="clearfix"></div>
@@ -72,7 +72,7 @@
                                         @endif
 
                                         @if (auth()->user()->can('cms.delete'))
-                                        <a class="btn btn-danger text-white" href="javascript:void(0);"
+                                        {{-- <a class="btn btn-danger text-white" href="javascript:void(0);"
                                             onclick="event.preventDefault(); if(confirm('Are you sure you want to delete?')) { document.getElementById('delete-form-{{ $admin->id }}').submit(); }">
                                             {{ __('Delete') }}
                                         </a>
@@ -82,7 +82,7 @@
                                             style="display: none;">
                                             @method('DELETE')
                                             @csrf
-                                        </form>
+                                        </form> --}}
                                         @endif
                                     </td>
                                 </tr>

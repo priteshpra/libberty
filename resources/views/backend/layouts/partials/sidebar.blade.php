@@ -104,7 +104,7 @@ $usr = Auth::guard('admin')->user();
                     $usr->can('banner.delete'))
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i
-                                class="fa fa-picture-o"></i><span>Gallerys</span>
+                                class="fa fa-picture-o"></i><span>Gallery</span>
                         </a>
                         <ul
                             class="collapse {{ Route::is('admin.gallery.create') || Route::is('admin.gallery.index') || Route::is('admin.gallery.edit') || Route::is('admin.gallery.show') ? 'in' : '' }}">
@@ -127,8 +127,8 @@ $usr = Auth::guard('admin')->user();
                     @if ($usr->can('cms.create') || $usr->can('cms.view') || $usr->can('cms.edit') ||
                     $usr->can('cms.delete'))
                     <li>
-                        <a href="javascript:void(0)" aria-expanded="true"><i
-                                class="fa fa-file-text"></i><span>CMS</span>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-file-text"></i><span>Inner
+                                Pages</span>
                         </a>
                         <ul
                             class="collapse {{ Route::is('admin.cms.create') || Route::is('admin.cms.index') || Route::is('admin.cms.edit') || Route::is('admin.cms.show') ? 'in' : '' }}">
@@ -136,13 +136,13 @@ $usr = Auth::guard('admin')->user();
                             @if ($usr->can('cms.view'))
                             <li
                                 class="{{ Route::is('admin.cms.index')  || Route::is('admin.cms.edit') ? 'active' : '' }}">
-                                <a href="{{ route('admin.cms.index') }}">All CMS</a>
+                                <a href="{{ route('admin.cms.index') }}">All Inner Pages</a>
                             </li>
                             @endif
 
                             @if ($usr->can('cms.create'))
-                            <li class="{{ Route::is('admin.cms.create')  ? 'active' : '' }}"><a
-                                    href="{{ route('admin.cms.create') }}">Create CMS</a></li>
+                            {{-- <li class="{{ Route::is('admin.cms.create')  ? 'active' : '' }}"><a
+                                    href="{{ route('admin.cms.create') }}">Create CMS</a></li> --}}
                             @endif
                         </ul>
                     </li>
