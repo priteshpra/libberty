@@ -58,7 +58,7 @@
                                     <th width="5%">{{ __('Sl') }}</th>
                                     <th width="10%">{{ __('Name') }}</th>
                                     <th width="10%">{{ __('Designation') }}</th>
-                                    <th width="40%">{{ __('Image') }}</th>
+                                    {{-- <th width="40%">{{ __('Image') }}</th> --}}
                                     <th width="15%">{{ __('Action') }}</th>
                                 </tr>
                             </thead>
@@ -68,8 +68,8 @@
                                     <td>{{ $loop->index+1 }}</td>
                                     <td>{{ $admin->title }}</td>
                                     <td>{{ $admin->designation }}</td>
-                                    <td><img src="{{ asset('/testimonials/') }}/{{ $admin->image }}" width="100px"
-                                            height="80px"></td>
+                                    {{-- <td><img src="{{ asset('/testimonials/') }}/{{ $admin->image }}" width="100px"
+                                            height="80px"></td> --}}
                                     <td>
                                         {{-- @if (auth()->user()->can('testimonial.edit')) --}}
                                         <a class="btn btn-success text-white"

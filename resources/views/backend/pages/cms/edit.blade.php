@@ -80,6 +80,10 @@ Inner Pages Edit - Admin Panel
                                         type=='banjara'
                                         ? 'selected' : '' }}>Banjara
                                     </option>
+                                    <option value="home" {{ old('type')=='home' ? 'selected' : '' }} {{ $admin->
+                                        type=='home'
+                                        ? 'selected' : '' }}>Home
+                                    </option>
                                 </select>
                             </div>
                         </div>

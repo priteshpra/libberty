@@ -227,6 +227,8 @@
                             <h2>If You ❤️ Good Food... You'll ❤️ Us...</h2>
 
                         </div>
+                        <br />
+                        {!! $homeContaint->description !!}
                     </div>
                 </div>
             </div>
@@ -361,8 +363,8 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <!-- Profile Picture -->
-                            <img src="{{ asset('testimonials/'.$testimonial->image) }}" class="testimonial-img"
-                                alt="{{ $testimonial->title }}">
+                            {{-- <img src="{{ asset('testimonials/'.$testimonial->image) }}" class="testimonial-img"
+                                alt="{{ $testimonial->title }}"> --}}
 
                             <!-- Testimonial Content -->
                             <p>

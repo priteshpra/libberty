@@ -72,13 +72,13 @@ Testimonial Edit - Admin Panel
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6 col-sm-6">
+                            {{-- <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Profile Image</label>
                                 <input type="file" name="image" id="image" class="form-control" />
                                 <br />
                                 <img src="{{ asset('testimonials/'.$admin->image) }}" alt="Profile Image" width="100px"
                                     height="80px" />
-                            </div>
+                            </div> --}}
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="username">Status</label>
                                 <select class="form-control " id="status" name="status" required>

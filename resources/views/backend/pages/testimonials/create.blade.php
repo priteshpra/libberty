@@ -73,10 +73,10 @@ Testimonial Create - Admin Panel
 
                         <div class="form-row">
 
-                            <div class="form-group col-md-6 col-sm-6">
+                            {{-- <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Profile Image</label>
                                 <input type="file" name="image" id="image" class="form-control" />
-                            </div>
+                            </div> --}}
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="username">Status</label>
                                 <select class="form-control " id="status" name="status" required>

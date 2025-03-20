@@ -73,6 +73,8 @@ CMS Create - Admin Panel
                                     </option>
                                     <option value="banjara" {{ old('type')=='banjara' ? 'selected' : '' }}>Banjara
                                     </option>
+                                    <option value="home" {{ old('type')=='home' ? 'selected' : '' }}>Home
+                                    </option>
                                 </select>
                             </div>
                         </div>
