@@ -56,40 +56,30 @@
                             <thead class="bg-light text-capitalize">
                                 <tr>
                                     <th width="5%">{{ __('Sl') }}</th>
-                                    <th width="10%">{{ __('Title') }}</th>
-                                    <th width="10%">{{ __('Heading') }}</th>
-                                    <th width="40%">{{ __('Image') }}</th>
-                                    <th width="15%">{{ __('Action') }}</th>
+                                    <th width="10%">{{ __('Name') }}</th>
+                                    <th width="10%">{{ __('Contact Number') }}</th>
+                                    <th width="15%">{{ __('Date') }}</th>
+                                    <th width="15%">{{ __('Time') }}</th>
+                                    <th width="20%">{{ __('Hall Name') }}</th>
+                                    <th width="5%">{{ __('No. of Guest') }}</th>
+                                    <th width="10%">{{ __('Package') }}</th>
+                                    <th width="5%">{{ __('Referance Any') }}</th>
+                                    <th width="15%">{{ __('Message') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($admins as $admin)
                                 <tr>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $admin->title }}</td>
-                                    <td>{{ $admin->heading }}</td>
-                                    <td><img src="{{ asset('/blogs/') }}/{{ $admin->image }}" width="100px"
-                                            height="80px"></td>
-                                    <td>
-                                        @if (auth()->user()->can('blogs.edit'))
-                                        <a class="btn btn-success text-white"
-                                            href="{{ route('admin.blogs.edit', $admin->id) }}">Edit</a>
-                                        @endif
-
-                                        @if (auth()->user()->can('blogs.delete'))
-                                        <a class="btn btn-danger text-white" href="javascript:void(0);"
-                                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete?')) { document.getElementById('delete-form-{{ $admin->id }}').submit(); }">
-                                            {{ __('Delete') }}
-                                        </a>
-
-                                        <form id="delete-form-{{ $admin->id }}"
-                                            action="{{ route('admin.blogs.destroy', $admin->id) }}" method="POST"
-                                            style="display: none;">
-                                            @method('DELETE')
-                                            @csrf
-                                        </form>
-                                        @endif
-                                    </td>
+                                    <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->contact_number }}</td>
+                                    <td>{{ $admin->event_date }}</td>
+                                    <td>{{ $admin->event_time }}</td>
+                                    <td>{{ $admin->hall_name }}</td>
+                                    <td>{{ $admin->no_of_guest }}</td>
+                                    <td>{{ $admin->package }}</td>
+                                    <td>{{ $admin->referance_any }}</td>
+                                    <td>{{ $admin->message }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

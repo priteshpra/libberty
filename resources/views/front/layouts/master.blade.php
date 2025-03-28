@@ -57,7 +57,7 @@
 </noscript>
 <!-- End Google Tag Manager -->
 <!-- preloader area start -->
-@if (!Route::is('blog') && !Route::is('blog.details'))
+@if (!Route::is('blog') && !Route::is('blog.details') && !Route::is('thank-you'))
 <div class="companylogo">
     <a href="#">
         <img src="{{ asset('front/assets/img/logo.png') }}" alt="Company logo" width="250px">
