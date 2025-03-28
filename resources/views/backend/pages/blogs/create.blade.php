@@ -65,7 +65,8 @@ Blog Create - Admin Panel
                             <div class="form-group col-md-6 col-sm-12">
                                 <label for="name">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"
-                                    placeholder="Enter Title" required autofocus value="{{ old('name') }}" required>
+                                    placeholder="Enter Title" required autofocus value="{{ old('name') }}"
+                                    oninput="removeSpecialChars(this)" required>
                             </div>
                             <div class="form-group col-md-6 col-sm-6">
                                 <label for="password">Author</label>
@@ -131,9 +132,15 @@ Blog Create - Admin Panel
 @endsection
 
 @section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.select2').select2();
     })
+</script>
+<script>
+    function removeSpecialChars(input) {
+        input.value = input.value.replace(/['"-]/g, '');
+    }
 </script>

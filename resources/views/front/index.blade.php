@@ -228,7 +228,9 @@
 
                         </div>
                         <br />
+                        @if(!empty($homeContaint) && is_object($homeContaint))
                         {!! $homeContaint->description !!}
+                        @endif
                     </div>
                 </div>
             </div>

@@ -39,6 +39,7 @@ class HomeController extends Controller
         $galleryRegent = Gallery::where(['status' => 1, 'type' => 'regent'])->get();
         $galleryBanjara = Gallery::where(['status' => 1, 'type' => 'banjara'])->get();
         $homeContaint = Cms::where(['status' => 1, 'type' => 'home'])->first();
+        $homeContaint = isset($homeContaint) ? $homeContaint->description : '';
         $testimonials = Testimonial::where(['status' => 1])->get();
         return  view('front.index', compact('galleryAnantaa', 'galleryRegent', 'galleryBanjara', 'testimonials', 'homeContaint'));
     }
@@ -94,5 +95,11 @@ class HomeController extends Controller
     public function thankYou()
     {
         return  view('front.thank-you');
+    }
+
+
+    public function odc()
+    {
+        return  view('front.odc');
     }
 }

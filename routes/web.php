@@ -35,6 +35,7 @@ Auth::routes();
 
 Route::get('/admin', 'HomeController@redirectAdmin')->name('index');
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/odc', 'HomeController@odc')->name('odc');
 Route::get('/regent-hall', 'HomeController@regentHall')->name('regent-hall');
 Route::get('/anantaa-hall', 'HomeController@anantaHall')->name('anantaa-hall');
 Route::get('/banjara-hall', 'HomeController@banjaraHall')->name('banjara-hall');

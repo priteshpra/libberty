@@ -17,7 +17,8 @@
                     <li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('home') }}#about">About</a></li>
                     <li><a href="{{ route('blog') }}" class="active">Blogs</a></li>
-
+                    <li><a href="{{ route('odc') }}"><i class="bi bi-door-open"></i><span>OD
+                                Catering</span></a></li>
                     <li><a href="{{ route('home') }}#contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -73,6 +74,8 @@
             </li>
             <li><a href="{{ route('home') }}#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
             <li><a href="{{ route('blog') }}"><i class="bi bi-book navicon"></i><span>Our Blog</span></a></li>
+            <li><a href="{{ route('odc') }}"><i class="bi bi-door-open"></i><span>OD
+                        Catering</span></a></li>
             <li><a href="{{ route('home') }}#portfolio"><i class="bi bi-images navicon"></i><span>Gallery</span></a>
             </li>
             <li><a href="{{ route('home') }}#contact"><i class="bi bi-envelope navicon"></i><span>Enquiry Now</span></a>
